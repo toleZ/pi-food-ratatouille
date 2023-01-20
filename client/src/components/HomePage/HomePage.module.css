@@ -1,0 +1,36 @@
+.bannerContainer {
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  background-image: url("https://images.squarespace-cdn.com/content/v1/51cdafc4e4b09eb676a64e68/1540581150505-WXZ5AE5M14VLNCJUPB0T/t2.jpg?format=2500w");
+  background-position: center;
+  background-size: cover;
+  backdrop-filter: blur(10px);
+}
+
+.bannerTitle {
+  color: white;
+  font-size: 3rem;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(1px);
+}
+
+.sectionTitle {
+  text-align: center;
+  font-size: 2rem;
+  margin: 0.5rem 0;
+}

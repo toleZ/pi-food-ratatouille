@@ -8,10 +8,8 @@ const getRecipesDT = async () => {
   return recipes;
 };
 
-const getRecipesAPI = async (quantity = 100) => {
-  const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=${String(
-    quantity
-  )}`;
+const getRecipesAPI = async () => {
+  const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=12`;
 
   const res = await fetch(url);
   return await res.json();

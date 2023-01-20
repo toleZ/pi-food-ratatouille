@@ -24,7 +24,7 @@ export const getRecipesByApi = () => {
     const res = await fetch("http://localhost:3001/recipes?from=api");
     const recipes = await res.json();
 
-    dispatch({ type: FETCH_RECIPES, payload: recipes });
+    dispatch({ type: GET_RECIPES_BY_API, payload: recipes });
   };
 };
 
@@ -33,7 +33,7 @@ export const getRecipesByDt = () => {
     const res = await fetch("http://localhost:3001/recipes?from=dt");
     const recipes = await res.json();
 
-    dispatch({ type: FETCH_RECIPES, payload: recipes });
+    dispatch({ type: GET_RECIPES_BY_DT, payload: recipes });
   };
 };
 
@@ -42,7 +42,7 @@ export const getRecipeByName = (name) => {
     const res = await fetch(`http://localhost:3001/recipes?name=${name}`);
     const recipe = await res.json();
 
-    dispatch({ type: FETCH_RECIPES, payload: recipe });
+    dispatch({ type: GET_RECIPES_BY_NAME, payload: recipe[0] });
   };
 };
 
@@ -51,7 +51,7 @@ export const getRecipeById = (id) => {
     const res = await fetch(`http://localhost:3001/recipes/${id}`);
     const recipe = await res.json();
 
-    dispatch({ type: FETCH_RECIPES, payload: recipe });
+    dispatch({ type: GET_RECIPE_BY_ID, payload: recipe });
   };
 };
 
@@ -63,6 +63,6 @@ export const createRecipe = ({ title, summary, healthScore, instructions }) => {
     });
     const createdRecipe = await res.json();
 
-    dispatch({ type: FETCH_RECIPES, payload: createdRecipe });
+    dispatch({ type: CREATE_RECIPE, payload: createdRecipe });
   };
 };
