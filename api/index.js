@@ -17,10 +17,10 @@
 //     =====`-.____`.___ \_____/___.-`___.-'=====
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-import server from "./src/app.js"
-import { conn } from "./src/db.js"
-import { createDiets } from "./src/utils.js"
-import { PORT } from process.env;
+const server = require("./src/app.js");
+const { conn } = require("./src/db.js");
+const { createDiets } = require("./src/utils.js");
+const { PORT } = process.env;
 
 // Syncing all the models at once.
 conn.sync({ alter: true }).then(() => {
