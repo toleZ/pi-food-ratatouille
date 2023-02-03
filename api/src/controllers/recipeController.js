@@ -1,6 +1,6 @@
 const { Recipe } = require("../db.js");
 const { API_KEY } = process.env;
-const fetch = require("node-fetch");
+import fetch from "node-fetch";
 
 const getRecipesDT = async () => {
   const recipes = await Recipe.findAll();
