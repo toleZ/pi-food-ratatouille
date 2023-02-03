@@ -12,7 +12,7 @@ export const SORT_RECIPES_BY_NAME = "SORT_RECIPES_BY_NAME";
 export const SORT_RECIPES_BY_HEALTH_SCORE = "SORT_RECIPES_BY_HEALTH_SCORE";
 export const HANDLE_FAVORITES_RECIPES = "HANDLE_FAVORITES_RECIPES";
 
-const basicUrl = "https://pi-food-ratatouille-production.up.railway.app/";
+const basicUrl = "https://pi-food-ratatouille-production.up.railway.app";
 
 export const fetchRecipes = () => {
   return async (dispatch) => {
