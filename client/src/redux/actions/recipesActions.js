@@ -12,9 +12,11 @@ export const SORT_RECIPES_BY_NAME = "SORT_RECIPES_BY_NAME";
 export const SORT_RECIPES_BY_HEALTH_SCORE = "SORT_RECIPES_BY_HEALTH_SCORE";
 export const HANDLE_FAVORITES_RECIPES = "HANDLE_FAVORITES_RECIPES";
 
+const basicUrl = "https://pi-food-ratatouille-production.up.railway.app/";
+
 export const fetchRecipes = () => {
   return async (dispatch) => {
-    const res = await fetch("http://localhost:3001/recipes");
+    const res = await fetch(`${basicUrl}/recipes`);
     const recipes = await res.json();
 
     dispatch({ type: FETCH_RECIPES, payload: recipes });
@@ -27,7 +29,7 @@ export const getRecipes = () => {
 
 export const getRecipesByApi = () => {
   return async (dispatch) => {
-    const res = await fetch("http://localhost:3001/recipes?from=api");
+    const res = await fetch(`${basicUrl}/recipes?from=api`);
     const recipes = await res.json();
 
     dispatch({ type: GET_RECIPES_BY_API, payload: recipes });
@@ -36,7 +38,7 @@ export const getRecipesByApi = () => {
 
 export const getRecipesByDt = () => {
   return async (dispatch) => {
-    const res = await fetch("http://localhost:3001/recipes?from=dt");
+    const res = await fetch(`${basicUrl}/recipes?from=dt`);
     const recipes = await res.json();
 
     dispatch({ type: GET_RECIPES_BY_DT, payload: recipes });
@@ -45,7 +47,7 @@ export const getRecipesByDt = () => {
 
 export const getRecipeByName = (name) => {
   return async (dispatch) => {
-    const res = await fetch(`http://localhost:3001/recipes?name=${name}`);
+    const res = await fetch(`${basicUrl}/recipes?name=${name}`);
     const recipes = await res.json();
 
     dispatch({ type: GET_RECIPES_BY_NAME, payload: recipes[0] });
@@ -54,7 +56,7 @@ export const getRecipeByName = (name) => {
 
 export const getRecipeById = (id) => {
   return async (dispatch) => {
-    const res = await fetch(`http://localhost:3001/recipes/${id}`);
+    const res = await fetch(`${basicUrl}/recipes/${id}`);
     const recipe = await res.json();
 
     dispatch({ type: GET_RECIPE_BY_ID, payload: recipe });
@@ -63,7 +65,7 @@ export const getRecipeById = (id) => {
 
 export const createRecipe = (recipe) => {
   return async (dispatch) => {
-    const res = await axios.post("http://localhost:3001/recipes", recipe);
+    const res = await axios.post(`${basicUrl}/recipes`, recipe);
 
     dispatch({ type: CREATE_RECIPE, payload: res.data });
   };
