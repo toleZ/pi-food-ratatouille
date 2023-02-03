@@ -1,6 +1,6 @@
 const { Recipe } = require("../db.js");
 const { API_KEY } = process.env;
-const fetch = import("node-fetch");
+const axios = require("axios");
 
 const getRecipesDT = async () => {
   const recipes = await Recipe.findAll();
@@ -12,8 +12,8 @@ const getRecipesDT = async () => {
 const getRecipesAPI = async () => {
   const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`;
 
-  const res = await fetch(url);
-  return await res.json();
+  const res = await axios.get(url);
+  return await res.data;
 };
 
 const getRecipes = async () => {
