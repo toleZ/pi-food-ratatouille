@@ -48,17 +48,39 @@ recipeRouter.get("/:id", async (req, res) => {
 });
 
 recipeRouter.post("/", async (req, res) => {
-  const { title, summary, healthScore, instructions } = await req.body;
+  const {
+    title,
+    summary,
+    healthScore,
+    instructions,
+    image,
+    dietsAlloweds,
+    readyInMinutes,
+    servings,
+    pricePerServing,
+  } = await req.body;
 
-  if (!title || !summary || !healthScore || !instructions)
-    return res.status(404).json({ err: "Missing data" });
+  if (
+    !title ||
+    !summary ||
+    !healthScore ||
+    !instructions ||
+    !image ||
+    !dietsAlloweds
+  )
+    return res.status(400).json({ err: "Missing data" });
 
   try {
     const newRecipe = await createRecipe(
       title,
       summary,
       healthScore,
-      instructions
+      instructions,
+      image,
+      dietsAlloweds,
+      readyInMinutes,
+      servings,
+      pricePerServing
     );
     res.status(200).json(newRecipe);
   } catch (err) {

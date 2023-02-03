@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { getRecipeByName } from "../../redux/actions/recipesActions";
 import {
   searchBarContainer,
@@ -7,13 +8,25 @@ import {
   searchBtn,
 } from "./SearchBar.module.css";
 import MagnifyingGlass from "../../assets/MagnifyingGlass";
+import { useEffect } from "react";
 
 const SearchBar = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [toSearch, setToSearch] = useState("");
 
-  //eslint-disable-next-line
   const { recipe } = useSelector((state) => state.recipesReducer);
+  useEffect(
+    () => {
+      if (toSearch) {
+        if (recipe?.title.toLowerCase().includes(toSearch.toLowerCase())) {
+          navigate(`/recipes/${recipe.id}`);
+        }
+      }
+    },
+    //eslint-disable-next-line
+    [recipe]
+  );
 
   const handleChange = (e) => {
     setToSearch(e.target.value);

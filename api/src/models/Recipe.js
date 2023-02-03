@@ -23,7 +23,24 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
       },
       instructions: {
+        type: DataTypes.ARRAY(DataTypes.STRING(300)),
+      },
+      image: {
+        type: DataTypes.STRING(500),
+        allowNull: false,
+      },
+      dietsAlloweds: {
         type: DataTypes.ARRAY(DataTypes.STRING),
+        allowNull: false,
+      },
+      readyInMinutes: {
+        type: DataTypes.INTEGER,
+      },
+      servings: {
+        type: DataTypes.INTEGER,
+      },
+      pricePerServing: {
+        type: DataTypes.FLOAT,
       },
     },
     { timestamps: false }

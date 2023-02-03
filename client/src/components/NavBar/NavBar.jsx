@@ -1,24 +1,24 @@
 import { NavLink } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
 import { navBar, navList, navItem } from "./NavBar.module.css";
+import Logo from "../../assets/images/gusteau-logo.png";
 
 const NavBar = () => {
   return (
     <nav className={navBar}>
-      <img src="./gusteau-logo.png" alt="gusteaus-logo" width="92px" />
-
+      <img src={Logo} alt="gusteaus-logo" width="92px" />
       <ul className={navList}>
-        <NavLink to="/" className={navItem}>
+        <NavLink to="/home" className={navItem}>
           Home
         </NavLink>
-        <NavLink to="/recipes" className={navItem}>
+        <NavLink to="/recipes/page/1" className={navItem}>
           Recipes
         </NavLink>
-        <NavLink to="/diets" className={navItem}>
-          Diets
+        <NavLink to="/recipes/favorites" className={navItem}>
+          Favorites
         </NavLink>
-        <NavLink to="/about" className={navItem}>
-          About
+        <NavLink to="/recipes/form" className={navItem}>
+          Creator
         </NavLink>
       </ul>
 

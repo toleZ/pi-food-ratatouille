@@ -20,7 +20,7 @@
 }
 
 .navItem {
-  color: white;
+  color: var(--font-main);
   text-decoration: none;
   list-style: none;
   font-weight: bold;

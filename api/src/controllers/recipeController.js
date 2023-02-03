@@ -9,7 +9,7 @@ const getRecipesDT = async () => {
 };
 
 const getRecipesAPI = async () => {
-  const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=12`;
+  const url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`;
 
   const res = await fetch(url);
   return await res.json();
@@ -24,7 +24,9 @@ const getRecipes = async () => {
 
 const getRecipeByName = async (recipeName) => {
   const recipes = await getRecipes();
-  const recipesFiltered = recipes.filter((r) => r.title.includes(recipeName));
+  const recipesFiltered = recipes.filter((r) =>
+    r.title.toLowerCase().includes(recipeName.toLowerCase())
+  );
 
   if (!recipesFiltered.length)
     throw Error(`Didn't found recipe with name:${recipeName}`);
@@ -39,10 +41,21 @@ const getRecipeById = async (id) => {
   return recipe;
 };
 
-const createRecipe = async (title, summary, healthScore, instructions) => {
-  const itAlreadyExists = await getRecipeByName(title);
+const createRecipe = async (
+  title,
+  summary,
+  healthScore,
+  instructions,
+  image,
+  dietsAlloweds,
+  readyInMinutes,
+  servings,
+  pricePerServing
+) => {
+  const recipes = await getRecipes();
+  const itAlreadyExists = await recipes.find((r) => r.title === title);
 
-  if (!itAlreadyExists.title)
+  if (itAlreadyExists)
     throw Error(`It already exists recipe with title: ${title}`);
 
   const newRecipe = await Recipe.create({
@@ -50,6 +63,11 @@ const createRecipe = async (title, summary, healthScore, instructions) => {
     summary,
     healthScore,
     instructions,
+    image,
+    dietsAlloweds,
+    readyInMinutes,
+    servings,
+    pricePerServing,
   });
 
   return newRecipe;
