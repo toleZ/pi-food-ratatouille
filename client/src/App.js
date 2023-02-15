@@ -13,6 +13,9 @@ import RecipeDetail from "./components/RecipeDetail/RecipeDetail";
 import RecipesPage from "./components/RecipesPage/RecipesPage";
 import { fetchDiets } from "./redux/actions/dietsActions";
 import { fetchRecipes } from "./redux/actions/recipesActions";
+import axios from "axios";
+
+axios.defaults.baseURL = "http://localhost:3001";
 
 const App = () => {
   const dispatch = useDispatch();

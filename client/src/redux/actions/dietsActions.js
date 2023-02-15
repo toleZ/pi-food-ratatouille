@@ -1,12 +1,14 @@
+import axios from "axios";
+
 export const FETCH_DIETS = "FETCH_DIETS";
 export const GET_DIETS = "GET_DIETS";
 
+const dietsAxios = axios.create({ baseURL: "http://localhost:3001/diets" });
+
 export const fetchDiets = () => {
   return async function (dispatch) {
-    const res = await fetch(
-      "https://pi-food-ratatouille-production.up.railway.app/diets"
-    );
-    const diets = await res.json();
+    const res = await dietsAxios.get();
+    const diets = res.data;
 
     dispatch({ type: FETCH_DIETS, payload: diets });
   };
